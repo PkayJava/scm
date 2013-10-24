@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.itrustcambodia.scm</groupId>
 	<artifactId>scm</artifactId>
-	<version>0.0.0.4</version>
+	<version>0.0.0.5-SNAPSHOT</version>
 	<name>scm</name>
 	<packaging>jar</packaging>
 
@@ -31,7 +31,7 @@
 		<url>https://github.com/PkayJava/scm</url>
 		<connection>scm:git:git://github.com/PkayJava/scm.git</connection>
 		<developerConnection>scm:git:git@github.com:PkayJava/scm.git</developerConnection>
-	  <tag>scm-0.0.0.4</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<repositories>

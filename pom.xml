@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.itrustcambodia.scm</groupId>
 	<artifactId>scm</artifactId>
-	<version>0.0.0.1-SNAPSHOT</version>
+	<version>0.0.0.2-SNAPSHOT</version>
 	<name>scm</name>
 	<packaging>jar</packaging>
 
@@ -16,7 +16,11 @@
 		<wicket.version>6.11.0</wicket.version>
 		<jasypt.version>1.9.0</jasypt.version>
 		<jodatime.version>2.2</jodatime.version>
-		<github.global.server>github</github.global.server>
+
+		<!-- maven -->
+		<maven.gpg.plugin.version>1.4</maven.gpg.plugin.version>
+		<maven.javadoc.plugin.version>2.9.1</maven.javadoc.plugin.version>
+		<maven.source.plugin.version>2.2.1</maven.source.plugin.version>
 	</properties>
 
 	<scm>
@@ -24,6 +28,28 @@
 		<connection>scm:git:git://github.com/PkayJava/scm.git</connection>
 		<developerConnection>scm:git:git@github.com:PkayJava/scm.git</developerConnection>
 	</scm>
+
+	<repositories>
+		<repository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	
+	<distributionManagement>
+		<repository>
+			<id>sonatype-nexus-staging</id>
+			<name>Nexus Release Repository</name>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
 
 	<developers>
 		<developer>
@@ -149,6 +175,49 @@
 						</file>
 					</additionalConfig>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>${maven.gpg.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven.javadoc.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven.source.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>
